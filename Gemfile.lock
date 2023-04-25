@@ -95,6 +95,10 @@ GEM
     debug (1.7.2)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -181,6 +185,7 @@ GEM
     reline (0.3.3)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rollbar (3.4.0)
     rubocop (1.50.2)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -261,11 +266,13 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  dotenv-rails
   jbuilder
   jsbundling-rails
   minitest-power_assert
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  rollbar
   rubocop-performance
   rubocop-rails
   selenium-webdriver
