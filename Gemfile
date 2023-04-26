@@ -44,6 +44,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'omniauth-github'
+
+gem 'omniauth-rails_csrf_protection'
+
 gem 'slim-rails'
 
 # Use Sass to process CSS
@@ -68,6 +72,8 @@ group :development, :test do
 
   gem 'dotenv-rails'
 
+  gem 'faker'
+
   gem 'minitest-power_assert'
 
   gem 'rubocop-rails', require: false
@@ -81,6 +87,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
+
   gem 'html2slim'
 
   # Use console on exceptions pages [https://github.com/rails/web-console]

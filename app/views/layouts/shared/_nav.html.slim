@@ -8,19 +8,19 @@
           li.nav-item.me-2
             = link_to root_path, class: 'nav-link text-dark' do
               = t('.home')
-          / - if signed_in?
-          li.nav-item.me-2
-            = link_to root_path, class: 'nav-link text-dark' do
-              = t('.repositories')
+          - if signed_in?
+            li.nav-item.me-2
+              = link_to root_path, class: 'nav-link text-dark' do
+                = t('.repositories')
     ul.nav.nav-pills
-      / - if signed_in?
-      li.nav-item.me-2
-        = link_to root_path, class: 'nav-link text-secondary' do
-          = t('.email')
-      li.nav-item.me-2
-        = link_to root_path, data: { turbo_method: :delete }, class: 'nav-link text-dark' do
-          = t('.sign_out')
-      / - else
-      li.nav-item.me-2
-        = link_to root_path, data: { turbo: false }, class: 'nav-link text-dark' do
-          = t('.sign_in')
+      - if signed_in?
+        li.nav-item.me-2
+          = link_to root_path, class: 'nav-link text-secondary' do
+            = current_user.email
+        li.nav-item.me-2
+          = link_to session_path, data: { turbo_method: :delete }, class: 'nav-link text-dark' do
+            = t('.sign_out')
+      - else
+        li.nav-item.me-2
+          = button_to auth_request_path('github'), data: { turbo: false }, class: 'nav-link text-dark'
+            = t('.sign_in')
