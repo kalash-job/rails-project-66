@@ -1,0 +1,26 @@
+---
+ru:
+  layouts:
+    application:
+      hexlet_title: Hexlet Ltd
+      title: Анализатор качества репозиториев
+    shared:
+      nav:
+        hexlet_logo: Hexlet logo
+        home: Главная
+        repositories: Репозитории
+        sign_in: Войти с помощью Github
+        sign_out: Выйти
+  web:
+    auth:
+      callback:
+        failure: Вы не вошли в систему
+        success: Вы успешно вошли
+    home:
+      index:
+        description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+        learn_more: Узнать больше
+        title: Анализатор качества репозиториев
+    sessions:
+      destroy:
+        success: Вы вышли из системы

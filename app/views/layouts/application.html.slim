@@ -16,8 +16,8 @@ html.h-100
     main
       .mt-4.mb-5.pb-5
         .container
+          = render_flash_messages
           .p-4.align-items-center.border.shadow.bg-white.rounded-3
-            = render_flash_messages
 
             == yield
 

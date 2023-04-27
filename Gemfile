@@ -44,9 +44,15 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'enumerize'
+
+gem 'octokit'
+
 gem 'omniauth-github'
 
 gem 'omniauth-rails_csrf_protection'
+
+gem 'rails-i18n'
 
 gem 'slim-rails'
 
@@ -90,6 +96,10 @@ group :development do
   gem 'annotate'
 
   gem 'html2slim'
+
+  gem 'i18n-debug'
+
+  gem 'i18n-tasks', '~> 1.0.12'
 
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
