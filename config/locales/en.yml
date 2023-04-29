@@ -1,5 +1,20 @@
 ---
 en:
+  activerecord:
+    attributes:
+      models:
+        repository: repository
+      repository:
+        github_id: Github
+    models:
+      repository: repository
+  buttons:
+    create: Create repository
+  enumerize:
+    repository:
+      language:
+        Ruby: Ruby
+        JavaScript: JavaScript
   layouts:
     application:
       hexlet_title: Hexlet Ltd
@@ -11,6 +26,10 @@ en:
         repositories: Repositories
         sign_in: Sign in
         sign_out: Sign out
+    web:
+      flash:
+        non_authenticated_user: The action is available only to registered users
+  was_not_checked: Was not checked
   web:
     auth:
       callback:
@@ -18,9 +37,31 @@ en:
         success: Success
     home:
       index:
-        description: A project that helps to automatically monitor the quality of repositories on Github. It tracks changes and runs them through the built-in analyzers. Then generates reports and sends them to the user.
+        description: A project that helps to automatically monitor the quality of
+          repositories on Github. It tracks changes and runs them through the built-in
+          analyzers. Then generates reports and sends them to the user.
         learn_more: Learn more
         title: Repository Quality Analyzer
+    repositories:
+      create:
+        failure: Repository has not been added
+        success: Repository has been added
+      index:
+        add: Add
+        language: Language
+        name: Name
+        no_name: "-"
+        status: Status
+        title: My repositories
+      new:
+        title: Adding new repository
+      show:
+        check: Check
+        creating_date: Creating date
+        language: Language
+        name: Name
+        title: Page of repository
+        updating_date: Updating date
     sessions:
       destroy:
         success: Success

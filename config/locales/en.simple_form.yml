@@ -1,0 +1,13 @@
+---
+en:
+  simple_form:
+    error_notification:
+      default_message: 'Please check the problems:'
+    hints:
+    labels:
+    'no': 'No'
+    required:
+      html: <abbr title="required">*</abbr>
+      mark: "*"
+      text: required
+    'yes': 'Yes'

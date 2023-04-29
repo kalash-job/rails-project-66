@@ -1,5 +1,20 @@
 ---
 ru:
+  activerecord:
+    attributes:
+      models:
+        repository: репозиторий
+      repository:
+        github_id: Github
+    models:
+      repository: репозиторий
+  buttons:
+    create: Создать репозиторий
+  enumerize:
+    repository:
+      language:
+        Ruby: Ruby
+        JavaScript: JavaScript
   layouts:
     application:
       hexlet_title: Hexlet Ltd
@@ -11,6 +26,10 @@ ru:
         repositories: Репозитории
         sign_in: Войти с помощью Github
         sign_out: Выйти
+    web:
+      flash:
+        non_authenticated_user: Действие доступно только зарегистрированным пользователям
+  was_not_checked: Проверок еще не было
   web:
     auth:
       callback:
@@ -18,9 +37,31 @@ ru:
         success: Вы успешно вошли
     home:
       index:
-        description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+        description: Проект, который помогает автоматически следить за качеством репозиториев
+          на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы.
+          Затем формирует отчеты и отправляет их пользователю.
         learn_more: Узнать больше
         title: Анализатор качества репозиториев
+    repositories:
+      create:
+        failure: Репозиторий не добавлен
+        success: Репозиторий добавлен
+      index:
+        add: Добавить
+        language: Язык
+        name: Название
+        no_name: "-"
+        status: Статус последней проверки
+        title: Мои репозитории
+      new:
+        title: Добавление нового репозитория
+      show:
+        check: Проверить
+        creating_date: Дата создания
+        language: Язык
+        name: Название
+        title: Страница репозитория
+        updating_date: Дата обновления
     sessions:
       destroy:
         success: Вы вышли из системы
