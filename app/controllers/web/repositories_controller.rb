@@ -8,8 +8,8 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def show
-    # TODO: Add pundit policy
     @repository = Repository.find(params[:id])
+    authorize @repository
   end
 
   def new

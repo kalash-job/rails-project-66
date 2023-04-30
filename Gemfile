@@ -54,6 +54,8 @@ gem 'omniauth-github'
 
 gem 'omniauth-rails_csrf_protection'
 
+gem 'pundit'
+
 gem 'rails-i18n'
 
 gem 'simple_form'

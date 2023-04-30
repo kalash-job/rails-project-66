@@ -13,8 +13,8 @@ ru:
   enumerize:
     repository:
       language:
-        Ruby: Ruby
         JavaScript: JavaScript
+        Ruby: Ruby
   layouts:
     application:
       hexlet_title: Hexlet Ltd
@@ -29,6 +29,7 @@ ru:
     web:
       flash:
         non_authenticated_user: Действие доступно только зарегистрированным пользователям
+        not_authorized: У вас нет прав для этого действия
   was_not_checked: Проверок еще не было
   web:
     auth:
