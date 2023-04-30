@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: repositories
+#
+#  id         :integer          not null, primary key
+#  language   :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  github_id  :integer
+#  user_id    :integer          not null
+#
+# Indexes
+#
+#  index_repositories_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  user_id  (user_id => users.id)
+#
+
+one:
+  name: MyString
+  language: MyString
+  github_id: 1
+  user: one
+
+two:
+  name: MyString
+  language: MyString
+  github_id: 1
+  user: two

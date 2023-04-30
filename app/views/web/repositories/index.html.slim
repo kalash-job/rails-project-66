@@ -1,0 +1,21 @@
+- content_for :title do
+  = t('.title')
+
+.mb-4
+  h1 = t('.title')
+  br
+  = link_to new_repository_path, class: 'btn btn-primary' do
+    = t('.add')
+  table.table.table-striped.table-hover.mt-4
+    thead
+      th[scope='col'] = t('.name')
+      th[scope='col'] = t('.language')
+      th[scope='col'] = t('.status')
+    tbody
+      - @repositories.each do |repository|
+        tr
+        td
+          = link_to repository_path(repository) do
+            = repository.name || t('.no_name')
+        td = repository.language
+        td = t('was_not_checked')

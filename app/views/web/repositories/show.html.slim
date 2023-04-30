@@ -1,0 +1,22 @@
+- content_for :title do
+  = t('.title')
+
+.mb-4
+  h1 = @repository.name
+  = link_to '#', class: 'btn btn-primary' do
+    = t('.check')
+  br
+  br
+  p
+    strong.me-2 = t('.name')
+    = @repository.name
+  p
+    strong.me-2 = t('.language')
+    = @repository.language
+  p
+    strong.me-2 = t('.creating_date')
+    = @repository.created_at.strftime('%d %b., %H:%M')
+  p
+    strong.me-2 = t('.updating_date')
+    = @repository.updated_at.strftime('%d %b., %H:%M')
+  hr

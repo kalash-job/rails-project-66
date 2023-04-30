@@ -12,4 +12,5 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :repositories, inverse_of: :user, dependent: :destroy
 end

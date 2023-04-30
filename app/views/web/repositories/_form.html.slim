@@ -1,0 +1,7 @@
+= simple_form_for repository do |f|
+  = f.error_notification
+  - if f.object.errors[:base].present?
+    = f.error_notification message: f.object.errors[:base].to_sentence
+
+  = f.input :github_id, hint: false, as: :select, collection: repositories_list
+  = f.submit t('buttons.create'), class: 'btn btn btn-success'

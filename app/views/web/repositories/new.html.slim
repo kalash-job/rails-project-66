@@ -1,0 +1,7 @@
+- content_for :title do
+  = t('.title')
+
+.mb-4
+  h1 = t('.title')
+  br
+  == render 'form', repository: @repository, repositories_list: @repositories_list

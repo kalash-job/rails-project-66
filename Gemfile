@@ -41,6 +41,8 @@ gem 'jbuilder'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'aasm'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
@@ -53,6 +55,8 @@ gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'rails-i18n'
+
+gem 'simple_form'
 
 gem 'slim-rails'
 
