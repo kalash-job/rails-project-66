@@ -28,6 +28,7 @@ ru:
         sign_out: Выйти
     web:
       flash:
+        can_not_get_github_data: Не удалось получить данные с Github
         non_authenticated_user: Действие доступно только зарегистрированным пользователям
         not_authorized: У вас нет прав для этого действия
   was_not_checked: Проверок еще не было

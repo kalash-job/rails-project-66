@@ -28,6 +28,7 @@ en:
         sign_out: Sign out
     web:
       flash:
+        can_not_get_github_data: Can not get data from Github
         non_authenticated_user: The action is available only to registered users
         not_authorized: You do not have the rights for this action
   was_not_checked: Was not checked
