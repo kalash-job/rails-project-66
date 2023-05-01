@@ -18,7 +18,7 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def create
-    @repository = current_user.repositories.build(repository_params)
+    @repository = current_user.repositories.find_or_initialize_by(repository_params)
 
     if @repository.save
       FetchRepositoryInfoJob.perform_later(@repository.id)

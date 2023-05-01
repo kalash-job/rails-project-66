@@ -14,7 +14,8 @@
 #
 # Indexes
 #
-#  index_repositories_on_user_id  (user_id)
+#  index_repositories_on_github_id  (github_id) UNIQUE
+#  index_repositories_on_user_id    (user_id)
 #
 # Foreign Keys
 #
@@ -26,6 +27,7 @@ class Repository < ApplicationRecord
   belongs_to :user, inverse_of: :repositories
 
   validates :github_id, presence: true
+  validates :github_id, uniqueness: true
 
   enumerize :language, in: %i[JavaScript Ruby], scope: true
 end

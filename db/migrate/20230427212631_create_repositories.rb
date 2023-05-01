@@ -5,8 +5,8 @@ class CreateRepositories < ActiveRecord::Migration[7.0]
       t.string :language
       t.integer :github_id
       t.references :user, null: false, foreign_key: true, index: true
-
       t.timestamps
+      t.index :github_id, unique: true
     end
   end
 end
