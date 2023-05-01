@@ -11,11 +11,11 @@
 #
 
 one:
-  nickname: MyString
-  email: MyString
-  token: MyString
+  nickname: <%= Faker::Name.first_name %>
+  email: <%= Faker::Internet.email %>
+  token: <%= Faker::Internet.uuid %>
 
 two:
-  nickname: MyString
-  email: MyString
-  token: MyString
+  nickname: <%= Faker::Name.first_name %>
+  email: <%= Faker::Internet.email %>
+  token: <%= Faker::Internet.uuid %>

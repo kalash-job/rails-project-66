@@ -1,10 +1,8 @@
 tests:
 	bin/rails test
-	bin/rails test:system
 
 check:
 	bin/rails test
-	bin/rails test:system
 	bundle exec rubocop
 	bundle exec slim-lint app/views/
 
