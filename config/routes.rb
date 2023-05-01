@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   scope module: :web do
     root 'home#index'
@@ -8,4 +10,5 @@ Rails.application.routes.draw do
     resource :session, only: %i[destroy]
     resources :repositories, only: %i[index show new create]
   end
+  mount Sidekiq::Web => '/sidekiq'
 end
