@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: repository_checks
+#
+#  id            :integer          not null, primary key
+#  passed        :boolean
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  commit_id     :integer
+#  repository_id :integer          not null
+#
+# Indexes
+#
+#  index_repository_checks_on_repository_id  (repository_id)
+#
+# Foreign Keys
+#
+#  repository_id  (repository_id => repositories.id)
+#
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  commit_id: 1
+  passed: false
+  repository: one
+
+two:
+  commit_id: 1
+  passed: false
+  repository: two
