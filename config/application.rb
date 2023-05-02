@@ -23,7 +23,5 @@ module RailsProject66
     I18n.load_path += Dir[Rails.root.join('lib/locale/*.{rb,yml}')]
     I18n.available_locales = %i[ru en]
     I18n.default_locale = :ru
-    config.autoload_paths += %W[#{config.root}/app/services]
-    config.autoload_paths += %W[#{config.root}/app/jobs]
   end
 end
