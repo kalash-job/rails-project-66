@@ -33,22 +33,6 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get new' do
     sign_in @current_user
-    link_repos = 'https://api.github.com/user/repos?per_page=100'
-    stub_request(:get, link_repos)
-      .to_return({
-                   body: load_fixture('files/repo_list.json'),
-                   status: 200,
-                   headers: { 'Content-Type' => 'application/json' }
-                 })
-
-    link_repositories = 'https://api.github.com/repositories/634347931'
-    stub_request(:get, link_repositories)
-      .to_return({
-                   body: load_fixture('files/repo_parent.json'),
-                   status: 200,
-                   headers: { 'Content-Type' => 'application/json' }
-                 })
-
     get new_repository_url
     assert_response :success
   end
@@ -61,8 +45,5 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert { repository }
     assert_redirected_to repositories_url
-    assert_enqueued_with(job: FetchRepositoryInfoJob, args: [repository.id]) do
-      FetchRepositoryInfoJob.perform_later(repository.id)
-    end
   end
 end

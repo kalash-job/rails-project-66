@@ -13,6 +13,11 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  setup do
+    queue_adapter.perform_enqueued_jobs = true
+    queue_adapter.perform_enqueued_at_jobs = true
+  end
+
   def load_fixture(filename)
     File.read(File.dirname(__FILE__) + "/fixtures/#{filename}")
   end

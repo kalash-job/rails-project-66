@@ -2,7 +2,7 @@
 
 class FetchRepositoriesListService
   def initialize(user_token)
-    @client = Octokit::Client.new access_token: user_token, auto_paginate: true
+    @client = ApplicationContainer[:octokit_client][user_token]
     @cache_key = "repositories_list_#{user_token}"
   end
 

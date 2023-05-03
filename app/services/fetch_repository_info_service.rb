@@ -3,7 +3,7 @@
 class FetchRepositoryInfoService
   def initialize(repository)
     @repository = repository
-    @client = Octokit::Client.new access_token: repository.user.token
+    @client = ApplicationContainer[:octokit_client][repository.user.token]
   end
 
   def call

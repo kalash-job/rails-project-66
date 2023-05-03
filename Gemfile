@@ -84,6 +84,8 @@ group :development, :test do
 
   gem 'dotenv-rails'
 
+  gem 'dry-container'
+
   gem 'faker'
 
   gem 'minitest-power_assert'
