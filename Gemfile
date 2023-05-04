@@ -109,6 +109,8 @@ group :development do
 
   gem 'i18n-tasks', '~> 1.0.12'
 
+  gem 'sidekiq'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
@@ -128,9 +130,9 @@ group :test do
 end
 
 group :production do
-  gem 'redis'
-
-  gem 'sidekiq'
-
   gem 'pg'
+end
+
+group :development, :production do
+  gem 'redis'
 end
