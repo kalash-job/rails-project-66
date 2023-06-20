@@ -1,13 +1,5 @@
 ---
 en:
-  activerecord:
-    attributes:
-      models:
-        repository: repository
-      repository:
-        github_id: Github
-    models:
-      repository: repository
   buttons:
     create: Create repository
   enumerize:
@@ -45,6 +37,10 @@ en:
         learn_more: Learn more
         title: Repository Quality Analyzer
     repositories:
+      checks:
+        create:
+          failure: Check has not been started
+          success: Check has been started
       create:
         failure: Repository has not been added
         success: Repository has been added
@@ -59,9 +55,12 @@ en:
         title: Adding new repository
       show:
         check: Check
+        check_passed: Check passed?
+        commit_id: Commit ID
         creating_date: Creating date
         language: Language
         name: Name
+        status: Status
         title: Page of repository
         updating_date: Updating date
     sessions:

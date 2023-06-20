@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     resource :session, only: %i[destroy]
-    resources :repositories, only: %i[index show new create]
+    resources :repositories, only: %i[index show new create] do
+      scope module: :repositories do
+        resources :checks, only: %i[create show]
+      end
+    end
   end
 
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?

@@ -1,0 +1,16 @@
+---
+ru:
+  activerecord:
+    attributes:
+      repository:
+        github_id: Github
+      repository/check:
+        state/created: Создана
+        state/checking: В процессе
+        state/finished: Завершена
+        state/failed: Завершилась с ошибкой
+    models:
+      check: Проверка
+      repository: Репозиторий
+      user: Пользователь
+      offense: Замечание

@@ -2,21 +2,42 @@
   = t('.title')
 
 .mb-4
-  h1 = @repository.name
-  = link_to '#', class: 'btn btn-primary' do
+  h1 = [@repository.owner_name, @repository.name].join('/')
+  br
+  = link_to repository_checks_path(@repository), data: { turbo_method: :post }, class: 'btn btn-primary' do
     = t('.check')
   br
   br
   p
     strong.me-2 = t('.name')
-    = @repository.name
+    = [@repository.owner_name, @repository.name].join('/')
   p
     strong.me-2 = t('.language')
     = @repository.language
   p
     strong.me-2 = t('.creating_date')
-    = @repository.created_at.strftime('%d %b., %H:%M')
+    = l(@repository.created_at, format: :long)
   p
     strong.me-2 = t('.updating_date')
-    = @repository.updated_at.strftime('%d %b., %H:%M')
+    = l(@repository.updated_at, format: :long)
   hr
+  table.table.table-striped.mt-4
+    thead
+      th[scope='col'] = ''
+      th[scope='col'] = t('.status')
+      th[scope='col'] = t('.commit_id')
+      th[scope='col'] = t('.check_passed')
+      th[scope='col'] = t('.creating_date')
+    tbody
+      - github_url = ['https://github.com', @repository.owner_name, @repository.name, 'commit'].join('/')
+      - @repository.checks.by_id_desc.each do |check|
+        - cache check do
+          tr
+          td
+            = link_to repository_check_path(@repository, check) do
+              = check.id
+          td = check.aasm.human_state
+          td = link_to [github_url, check.commit_id].join('/') do
+            = check.commit_id
+          td = check.passed
+          td = l(check.created_at, format: :long)

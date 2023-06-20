@@ -19,4 +19,5 @@
             = link_to repository_path(repository) do
               = repository.name || t('.no_name')
           td = repository.language
-          td = t('was_not_checked')
+          - check_passed = repository.checks.last&.passed
+          td = check_passed.nil? ? t('was_not_checked') : check_passed

@@ -1,0 +1,16 @@
+---
+en:
+  activerecord:
+    attributes:
+      repository:
+        github_id: Github
+      repository/check:
+        state/created: Created
+        state/checking: Checking
+        state/finished: Finished
+        state/failed: Failed
+    models:
+      check: Check
+      repository: Repository
+      user: User
+      offense: Offense

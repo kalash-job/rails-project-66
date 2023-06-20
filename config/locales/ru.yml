@@ -1,13 +1,5 @@
 ---
 ru:
-  activerecord:
-    attributes:
-      models:
-        repository: репозиторий
-      repository:
-        github_id: Github
-    models:
-      repository: репозиторий
   buttons:
     create: Создать репозиторий
   enumerize:
@@ -45,6 +37,10 @@ ru:
         learn_more: Узнать больше
         title: Анализатор качества репозиториев
     repositories:
+      checks:
+        create:
+          failure: Проверка не началась
+          success: Проверка началась
       create:
         failure: Репозиторий не добавлен
         success: Репозиторий добавлен
@@ -59,9 +55,12 @@ ru:
         title: Добавление нового репозитория
       show:
         check: Проверить
+        check_passed: Проверка пройдена?
+        commit_id: ID коммита
         creating_date: Дата создания
         language: Язык
         name: Название
+        status: Статус
         title: Страница репозитория
         updating_date: Дата обновления
     sessions:

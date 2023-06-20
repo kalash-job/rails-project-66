@@ -5,8 +5,10 @@
 # Table name: repositories
 #
 #  id         :integer          not null, primary key
+#  clone_url  :string
 #  language   :string
 #  name       :string
+#  owner_name :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  github_id  :integer
@@ -25,6 +27,7 @@ class Repository < ApplicationRecord
   extend Enumerize
 
   belongs_to :user, inverse_of: :repositories
+  has_many :checks, class_name: 'Repository::Check', inverse_of: :repository, dependent: :destroy
 
   validates :github_id, presence: true
   validates :github_id, uniqueness: true

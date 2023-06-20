@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_02_004936) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_173322) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
+    t.string "owner_name"
     t.string "language"
     t.integer "github_id"
+    t.string "clone_url"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,12 +25,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_004936) do
   end
 
   create_table "repository_checks", force: :cascade do |t|
-    t.integer "commit_id"
-    t.boolean "passed"
+    t.string "commit_id"
+    t.integer "offenses_count"
+    t.boolean "passed", default: false
     t.integer "repository_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
+  end
+
+  create_table "repository_offenses", force: :cascade do |t|
+    t.string "path"
+    t.string "rule_id"
+    t.string "message"
+    t.string "coords"
+    t.integer "check_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["check_id"], name: "index_repository_offenses_on_check_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +56,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_004936) do
 
   add_foreign_key "repositories", "users"
   add_foreign_key "repository_checks", "repositories"
+  add_foreign_key "repository_offenses", "repository_checks", column: "check_id"
 end

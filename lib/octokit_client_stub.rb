@@ -12,13 +12,16 @@ class OctokitClientStub
     ]
   end
 
-  Repository = Struct.new(:parent, :language, :name)
+  Repository = Struct.new(:parent, :language, :name, :clone_url, :owner)
+  Owner = Struct.new(:login)
 
   def repository(_)
     Repository.new(
       Repository.new(nil, 'JavaScript', 'test2'),
       'JavaScript',
-      'test1'
+      'test1',
+      'https://github.com/test/test.js.git',
+      Owner.new('test')
     )
   end
 end
