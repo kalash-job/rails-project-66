@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'open3'
-
 class CheckRepositoryService
   LINTERS_BY_LANGUAGE = {
     'Ruby' => 'Rubocop',
@@ -16,9 +14,9 @@ class CheckRepositoryService
 
   def call
     @check.commit_id = @client.commits(@repository.github_id, 'master').first.sha[0...6]
+    linter = LINTERS_BY_LANGUAGE.fetch(@repository.language)
     report = LinterCheckers::LinterCheckService
-             .create_linter_checker(@check, LINTERS_BY_LANGUAGE.fetch(@repository.language)).call
-    ReportParsers::LinterReportParserService
-      .create_linter_report_parser(@check, LINTERS_BY_LANGUAGE.fetch(@repository.language)).call(report)
+             .create_linter_checker(@check, linter).call
+    ReportParsers::LinterReportParserService.create_linter_report_parser(@check, linter).call(report)
   end
 end

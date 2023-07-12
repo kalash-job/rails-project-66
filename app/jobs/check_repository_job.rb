@@ -3,10 +3,10 @@
 class CheckRepositoryJob < ApplicationJob
   queue_as :default
 
-  rescue_from(StandardError) do |exception|
+  rescue_from(StandardError) do |error|
     @check.fail!
     clean_repositories_directory
-    raise exception
+    logger.error error
   end
 
   def perform(check_id)
