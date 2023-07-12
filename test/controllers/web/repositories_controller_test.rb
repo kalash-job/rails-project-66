@@ -41,7 +41,8 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     sign_in @current_user
     attributes = { github_id: Faker::Number.number(digits: 9) }
     post repositories_url params: { repository: attributes }
-    repository = @current_user.repositories.find_by(attributes)
+    search_attributes = attributes.merge(clone_url: 'https://github.com/test/test.js.git')
+    repository = @current_user.repositories.find_by(search_attributes)
 
     assert { repository }
     assert_redirected_to repositories_url

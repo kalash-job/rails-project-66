@@ -1,0 +1,44 @@
+[
+  {
+    "filePath": "/home/nikolay/Hexlet/rails-project-66/tmp/repositories/634347931/__fixtures__/getRemoveResponse.js",
+    "messages": [
+      {
+        "ruleId": null,
+        "fatal": true,
+        "severity": 2,
+        "message": "Parsing error: The keyword 'const' is reserved",
+        "line": 1,
+        "column": 1
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 1,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "const getRemoveResponse = gameId => (JSON.stringify([null, null, 'lobby', 'game:remove', { id: gameId }]));\n\nexport default getRemoveResponse;\n",
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/home/nikolay/Hexlet/rails-project-66/tmp/repositories/634347931/__fixtures__/getUpdateResponse.js",
+    "messages": [
+      {
+        "ruleId": null,
+        "fatal": true,
+        "severity": 2,
+        "message": "Parsing error: The keyword 'const' is reserved",
+        "line": 1,
+        "column": 1
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 1,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "const getUpdateResponse = (gameId, state = 'waiting_opponent') => (JSON.stringify([null,\n  null,\n  'lobby',\n  'game:upsert',\n  {\n    game: {\n      id: gameId,\n      inserted_at: '2020-10-04T22:38:22',\n      is_bot: false,\n      level: 'elementary',\n      players: [{\n        id: 2782,\n        name: 'H9ko',\n        is_bot: false,\n        github_id: 57991929,\n        lang: 'js',\n        editor_text: 'module.exports = () => {\\n\\n};',\n        editor_lang: 'js',\n        creator: true,\n        game_result: 'undefined',\n        check_result: {\n          asserts: [], asserts_count: 0, output: '', result: '{\"status\": \"info\"}', status: 'initial', success_count: 0,\n        },\n        achievements: ['played_ten_games', 'played_fifty_games'],\n        rating: 1152,\n        rating_diff: 0,\n      }],\n      state,\n      timeout_seconds: 7200,\n      type: 'public',\n    },\n  }]));\n\nexport default getUpdateResponse;\n",
+    "usedDeprecatedRules": []
+  }
+]

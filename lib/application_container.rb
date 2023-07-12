@@ -10,4 +10,12 @@ class ApplicationContainer
       Octokit::Client.new(access_token: user_token, auto_paginate: true)
     end
   end
+
+  register(:open3) do |cmd|
+    if Rails.env.test?
+      Open3Stub.new(cmd)
+    else
+      Open3
+    end
+  end
 end

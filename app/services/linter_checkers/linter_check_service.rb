@@ -12,7 +12,8 @@ class LinterCheckers::LinterCheckService
   end
 
   def call
-    Open3.popen3(cmd) { |_stdin, stdout, _stderr, _wait_thr| stdout.read }
+    open3 = ApplicationContainer[:open3][cmd]
+    open3.popen3(cmd) { |_stdin, stdout, _stderr, _wait_thr| stdout.read }
   end
 
   private

@@ -7,7 +7,7 @@ class ReportParsers::EslintReportParserService < ReportParsers::LinterReportPars
     offenses_count = 0
     parsed_report.each do |offenses|
       offenses_count += offenses['messages'].size
-      path = offenses['filePath']
+      path = relative_path(offenses['filePath'])
       offenses['messages'].each do |offense|
         @check.offenses.create(
           path:,
@@ -19,5 +19,12 @@ class ReportParsers::EslintReportParserService < ReportParsers::LinterReportPars
     end
     @check.offenses_count = offenses_count
     @check.save
+  end
+
+  private
+
+  def relative_path(path)
+    path_elements = path.split('/')
+    path_elements.drop(path_elements.index('repositories') + PATH_NESTING_LEVEL).join('/')
   end
 end

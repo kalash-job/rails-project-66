@@ -5,6 +5,10 @@ class RepositoryPolicy < ApplicationPolicy
     owner?
   end
 
+  def check?
+    owner?
+  end
+
   private
 
   def owner?

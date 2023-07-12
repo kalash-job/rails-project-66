@@ -24,4 +24,9 @@ class OctokitClientStub
       Owner.new('test')
     )
   end
+
+  Commit = Struct.new(:sha)
+  def commits(_, _)
+    [Commit.new('79dedc238ec30bc5f7c5ee8005e66c99d42a97f6')]
+  end
 end
