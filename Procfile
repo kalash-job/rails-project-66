@@ -1,2 +1,3 @@
-release: bundle exec rails db:migrate
-web: bundle exec rails server
+redis: sudo systemctl start redis-server
+web: rails s
+worker: bundle exec sidekiq

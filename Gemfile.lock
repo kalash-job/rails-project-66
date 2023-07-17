@@ -127,6 +127,7 @@ GEM
     faraday-net_http (3.0.2)
     flash_rails_messages (2.3.0)
       rails (>= 5.2)
+    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -382,6 +383,7 @@ DEPENDENCIES
   enumerize
   faker
   flash_rails_messages
+  foreman
   html2slim
   i18n-debug
   i18n-tasks (~> 1.0.12)

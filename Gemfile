@@ -103,6 +103,8 @@ end
 group :development do
   gem 'annotate'
 
+  gem 'foreman'
+
   gem 'html2slim'
 
   gem 'i18n-debug'
