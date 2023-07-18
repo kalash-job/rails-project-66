@@ -4,6 +4,7 @@ class LinterCheckers::EslintCheckService < LinterCheckers::LinterCheckService
   def cmd
     command_options = [
       '--no-eslintrc',
+      '-c .eslintrc.js',
       '--format json'
     ]
 

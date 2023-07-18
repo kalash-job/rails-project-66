@@ -8,6 +8,19 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     @current_user = users(:one)
   end
 
+  test 'should get show check' do
+    sign_in @current_user
+    check = repository_checks(:one)
+    get repository_check_url check.repository, check
+    assert_response :success
+  end
+
+  test 'should not get show check without login' do
+    check = repository_checks(:one)
+    get repository_check_url check.repository, check
+    assert_redirected_to root_url
+  end
+
   test 'should create check for JavaScript repository' do
     sign_in @current_user
     post repository_checks_url @repository

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'open3'
+
 class ApplicationContainer
   extend Dry::Container::Mixin
 
