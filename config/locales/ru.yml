@@ -41,6 +41,17 @@ ru:
         create:
           failure: Проверка не началась
           success: Проверка началась
+        show:
+          back_to_repository: Перейти к репозиторию
+          check_id: "Проверка # %{id}"
+          check_passed: Проверка пройдена
+          coords: Строка и символ
+          created_at: Дата создания
+          commit_id: ID коммита
+          message: Сообщение
+          offenses_count: Количество замечаний
+          rule_id: Идентификатор правила
+          title: Результаты проверки репозитория
       create:
         failure: Репозиторий не добавлен
         success: Репозиторий добавлен

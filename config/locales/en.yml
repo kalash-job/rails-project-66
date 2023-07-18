@@ -41,6 +41,17 @@ en:
         create:
           failure: Check has not been started
           success: Check has been started
+        show:
+          back_to_repository: Back to repository
+          check_id: "Check # %{id}"
+          check_passed: Check passed
+          commit_id: Commit ID
+          coords: Coords
+          created_at: Creating date
+          message: Message
+          offenses_count: Offenses count
+          rule_id: Rule ID
+          title: Results of repository check
       create:
         failure: Repository has not been added
         success: Repository has been added
