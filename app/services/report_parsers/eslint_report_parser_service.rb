@@ -18,13 +18,7 @@ class ReportParsers::EslintReportParserService < ReportParsers::LinterReportPars
       end
     end
     @check.offenses_count = offenses_count
+    @check.passed = offenses_count.zero?
     @check.save
-  end
-
-  private
-
-  def relative_path(path)
-    path_elements = path.split('/')
-    path_elements.drop(path_elements.index('repositories') + PATH_NESTING_LEVEL).join('/')
   end
 end

@@ -27,16 +27,18 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to repository_url(@repository)
     @repository.checks.last.tap do |check|
       assert { check.offenses_count == 2 }
+      assert { !check.passed }
     end
   end
 
   test 'should create check for Ruby repository' do
     sign_in users(:two)
     repository = repositories(:two)
-    # TODO: Implement this test after implementing Rubocop checker
-    assert_raises NotImplementedError do
-      post repository_checks_url repository
-      assert_redirected_to repository_url(repository)
+    post repository_checks_url repository
+    assert_redirected_to repository_url(repository)
+    repository.checks.last.tap do |check|
+      assert { check.offenses_count == 2 }
+      assert { !check.passed }
     end
   end
 

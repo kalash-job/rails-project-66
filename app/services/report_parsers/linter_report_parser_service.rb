@@ -11,7 +11,14 @@ class ReportParsers::LinterReportParserService
     @check = check
   end
 
-  def call
+  def call(_report)
     raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  end
+
+  private
+
+  def relative_path(path)
+    path_elements = path.split('/')
+    path_elements.drop(path_elements.index('repositories') + PATH_NESTING_LEVEL).join('/')
   end
 end

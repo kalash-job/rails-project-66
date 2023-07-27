@@ -21,23 +21,24 @@
     strong.me-2 = t('.updating_date')
     = l(@repository.updated_at, format: :long)
   hr
-  table.table.table-striped.mt-4
-    thead
-      tr
-        th[scope='col'] = ''
-        th[scope='col'] = t('.status')
-        th[scope='col'] = t('.commit_id')
-        th[scope='col'] = t('.check_passed')
-        th[scope='col'] = t('.creating_date')
-    tbody
-      - @repository.checks.by_id_desc.each do |check|
-        - cache check do
-          tr
-          td
-            = link_to repository_check_path(@repository, check) do
-              = check.id
-          td = check.aasm.human_state
-          td = link_to github_commit_url(@repository, check.commit_id) do
-            = check.commit_id
-          td = check.passed
-          td = l(check.created_at, format: :long)
+  - if @repository.checks.any?
+    table.table.table-striped.mt-4
+      thead
+        tr
+          th[scope='col'] = ''
+          th[scope='col'] = t('.status')
+          th[scope='col'] = t('.commit_id')
+          th[scope='col'] = t('.check_passed')
+          th[scope='col'] = t('.creating_date')
+      tbody
+        - @repository.checks.by_id_desc.each do |check|
+          - cache check do
+            tr
+            td
+              = link_to repository_check_path(@repository, check) do
+                = check.id
+            td = check.aasm.human_state
+            td = link_to github_commit_url(@repository, check.commit_id) do
+              = check.commit_id
+            td = check.passed
+            td = l(check.created_at, format: :long)

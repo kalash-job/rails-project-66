@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LinterCheckers::EslintCheckService < LinterCheckers::LinterCheckService
+  private
+
   def cmd
     command_options = [
       '--no-eslintrc',

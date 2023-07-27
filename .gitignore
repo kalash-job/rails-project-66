@@ -49,3 +49,4 @@
 .tool-versions
 .env
 /coverage/
+dump.rdb
