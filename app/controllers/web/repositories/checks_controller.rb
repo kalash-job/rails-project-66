@@ -7,9 +7,11 @@ class Web::Repositories::ChecksController < Web::Repositories::ApplicationContro
     @repository = Repository.find(params[:repository_id])
     @check = @repository.checks.find(params[:id])
     authorize @check
-    @offenses = @check.offenses.each_with_object({}) do |offense, acc|
-      acc[offense.path] ||= []
-      acc[offense.path] << offense
+    @offenses = Rails.cache.fetch([@check, 'offenses']) do
+      @check.offenses.each_with_object({}) do |offense, acc|
+        acc[offense.path] ||= []
+        acc[offense.path] << offense
+      end
     end
   end
 
