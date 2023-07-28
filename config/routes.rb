@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    post 'checks', to: 'checks#create'
+  end
+
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
 end

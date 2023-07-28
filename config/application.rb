@@ -24,5 +24,6 @@ module RailsProject66
     I18n.available_locales = %i[ru en]
     I18n.default_locale = :ru
     config.autoload_paths += %W[#{config.root}/lib]
+    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
   end
 end

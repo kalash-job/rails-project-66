@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class FetchRepositoryInfoService
-  def initialize(repository)
+  def initialize(repository, client)
     @repository = repository
-    @client = ApplicationContainer[:octokit_client][repository.user.token]
+    @client = client
   end
 
   def call

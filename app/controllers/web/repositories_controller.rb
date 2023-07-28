@@ -19,9 +19,10 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def create
     @repository = current_user.repositories.find_or_initialize_by(repository_params)
+    is_new_repository = @repository.new_record?
 
     if @repository.save
-      FetchRepositoryInfoJob.perform_later(@repository.id)
+      ProcessNewRepositoryJob.perform_later(@repository.id) if is_new_repository
       redirect_to repositories_path, notice: t('.success')
     else
       flash.now[:failure] = t('.failure')
