@@ -17,7 +17,8 @@ class AddRepositoryWebhookService
       'web',
       {
         url: URI.join(ENV.fetch('BASE_URL', nil), WEBHOOK_PATH).to_s,
-        content_type: 'json'
+        content_type: 'json',
+        secret: ENV.fetch('GITHUB_WEBHOOK_SECRET_TOKEN', nil)
       },
       {
         events: WEBHOOK_EVENTS,
