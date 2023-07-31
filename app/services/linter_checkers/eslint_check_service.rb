@@ -12,4 +12,6 @@ class LinterCheckers::EslintCheckService < LinterCheckers::LinterCheckService
 
     "eslint #{Rails.root.join('tmp', 'repositories', @repository.github_id.to_s)} #{command_options.join(' ')}"
   end
+
+  def prepare_config; end
 end
