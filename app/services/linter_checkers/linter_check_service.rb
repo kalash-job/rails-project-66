@@ -12,7 +12,7 @@ class LinterCheckers::LinterCheckService
   end
 
   def call
-    prepare_config
+    # prepare_config
     open3 = ApplicationContainer[:open3][cmd]
     open3.popen3(cmd) { |_stdin, stdout, _stderr, _wait_thr| stdout.read }
   end
@@ -23,7 +23,7 @@ class LinterCheckers::LinterCheckService
     raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
   end
 
-  def prepare_config
-    raise NotImplementedError, "#{self.class} has not implemented method '#{__method__}'"
+  def repository_path
+    [Rails.root.to_s, File.join(Dir.tmpdir, 'repositories', @repository.github_id.to_s)].join
   end
 end
