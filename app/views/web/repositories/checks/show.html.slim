@@ -32,14 +32,13 @@ table.table.table-hover.mb-5
       th = t('.coords')
   tbody
     - @offenses.each do |path, offenses|
-      - cache [path, offenses] do
+      tr
+        td = link_to github_file_url(@repository, @check.commit_id, path) do
+          = path
+        td
+        td
+      - offenses.each do |offense|
         tr
-          td = link_to github_file_url(@repository, @check.commit_id, path) do
-            = path
-          td
-          td
-        - offenses.each do |offense|
-          tr
-            td = offense.message
-            td = offense.rule_id
-            td = offense.coords
+          td = offense.message
+          td = offense.rule_id
+          td = offense.coords

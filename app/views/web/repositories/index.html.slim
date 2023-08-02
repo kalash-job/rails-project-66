@@ -13,11 +13,10 @@
       th[scope='col'] = t('.status')
     tbody
       - @repositories.each do |repository|
-        - cache repository do
-          tr
-          td
-            = link_to repository_path(repository) do
-              = repository.name || t('.no_name')
-          td = repository.language
-          - check_passed = repository.checks.last&.passed
-          td = check_passed.nil? ? t('was_not_checked') : check_passed
+        tr
+        td
+          = link_to repository_path(repository) do
+            = repository.name || t('.no_name')
+        td = repository.language
+        - check_passed = repository.checks.last&.passed
+        td = check_passed.nil? ? t('was_not_checked') : check_passed
