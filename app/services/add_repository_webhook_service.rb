@@ -3,6 +3,8 @@
 require 'uri'
 
 class AddRepositoryWebhookService
+  include Rails.application.routes.url_helpers
+
   WEBHOOK_PATH = '/api/checks'
   WEBHOOK_EVENTS = ['push'].freeze
 
@@ -16,7 +18,7 @@ class AddRepositoryWebhookService
       [@repository.owner_name, @repository.name].join('/'),
       'web',
       {
-        url: URI.join(ENV.fetch('BASE_URL', nil), WEBHOOK_PATH).to_s,
+        url: api_checks_url,
         content_type: 'json',
         secret: ENV.fetch('GITHUB_WEBHOOK_SECRET_TOKEN', nil)
       },

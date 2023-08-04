@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::ChecksController < ApplicationController
+class Api::ChecksController < Api::ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :check_github_webhook_token
 

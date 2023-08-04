@@ -12,11 +12,12 @@ Rails.application.routes.draw do
       scope module: :repositories do
         resources :checks, only: %i[create show]
       end
+      post 'invalidate_cache', on: :collection
     end
   end
 
   namespace :api do
-    post 'checks', to: 'checks#create'
+    resources :checks, only: %i[create]
   end
 
   mount Sidekiq::Web => '/sidekiq' if Rails.env.development?

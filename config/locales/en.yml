@@ -62,7 +62,13 @@ en:
         no_name: "-"
         status: Status
         title: My repositories
+      invalidate_cache:
+        success: Cache has been updated
       new:
+        invalidate_cache: Update cache
+        last_update: "Last update of cache for the list of repositories was %{period} ago."
+        notice: If you deleted, created or renamed a repository after this time, then you need to
+          update the cache. Click the button below to do this.
         title: Adding new repository
       show:
         check: Check

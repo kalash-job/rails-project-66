@@ -15,6 +15,7 @@ class Web::RepositoriesController < Web::ApplicationController
   def new
     @repositories_list = FetchRepositoriesListService.new(current_user.token).call
     @repository = Repository.new
+    @cache_key = repositories_list_cache_key
   end
 
   def create
@@ -31,9 +32,21 @@ class Web::RepositoriesController < Web::ApplicationController
     end
   end
 
+  def invalidate_cache
+    @cache_key = repositories_list_cache_key
+    Rails.cache.delete(@cache_key)
+    @repositories_list = FetchRepositoriesListService.new(current_user.token).call
+    @repository = Repository.new
+    redirect_to new_repository_path, notice: t('.success')
+  end
+
   private
 
   def repository_params
     params.require(:repository).permit(:github_id)
+  end
+
+  def repositories_list_cache_key
+    "repositories_list_#{current_user.token}"
   end
 end
