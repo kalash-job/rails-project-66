@@ -9,7 +9,7 @@ class Api::ChecksController < Api::ApplicationController
       repository = Repository.find_by!(github_id: params[:repository][:id])
     rescue ActiveRecord::RecordNotFound => e
       Rails.logger.error(e)
-      head :unprocessable_entity and return
+      head :unprocessable_entity
     end
 
     @check = repository.checks.build
