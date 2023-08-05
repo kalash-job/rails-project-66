@@ -8,10 +8,10 @@
   br
   - if Rails.cache.exist?(@cache_key)
     - expires_at = Rails.cache.send(:read_entry, @cache_key)&.expires_at
-    small = t('.last_update', period: time_ago_in_words(Time.at(expires_at.to_i) - 1.hour))
+    small = t('.last_update', period: time_ago_in_words(Time.zone.at(expires_at.to_i) - 1.hour))
     br
     small = t('.notice')
     br
     br
-    = link_to invalidate_cache_repositories_path(@repository), data: { turbo_method: :post }, class: 'btn btn-outline-success btn-sm'
+    = link_to invalidate_cache_repositories_path, data: { turbo_method: :post }, class: 'btn btn-outline-success btn-sm'
       = t('.invalidate_cache')

@@ -47,4 +47,10 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
     assert { repository }
     assert_redirected_to repositories_url
   end
+
+  test 'should invalidate cache' do
+    sign_in @current_user
+    post invalidate_cache_repositories_url
+    assert_redirected_to new_repository_url
+  end
 end
