@@ -4,11 +4,10 @@
 .mb-4
   h1 = t('.title')
   br
-  == render 'form', repository: @repository, repositories_list: @repositories_list
+  == render 'form', repository: @repository, repositories_list: @repositories_list.values.first
   br
   - if Rails.cache.exist?(@cache_key)
-    - expires_at = Rails.cache.send(:read_entry, @cache_key)&.expires_at
-    small = t('.last_update', period: time_ago_in_words(Time.zone.at(expires_at.to_i) - 1.hour))
+    small = t('.last_update', period: time_ago_in_words(Time.zone.at(@repositories_list.keys.first)))
     br
     small = t('.notice')
     br

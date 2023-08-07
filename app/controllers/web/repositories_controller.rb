@@ -35,8 +35,6 @@ class Web::RepositoriesController < Web::ApplicationController
   def invalidate_cache
     @cache_key = repositories_list_cache_key
     Rails.cache.delete(@cache_key)
-    @repositories_list = FetchRepositoriesListService.new(current_user.token).call
-    @repository = Repository.new
     redirect_to new_repository_path, notice: t('.success')
   end
 
