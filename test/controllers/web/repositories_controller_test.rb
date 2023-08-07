@@ -50,7 +50,13 @@ class Web::RepositoriesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should invalidate cache' do
     sign_in @current_user
-    post invalidate_cache_repositories_url
-    assert_redirected_to new_repository_url
+    cache_key = "repositories_list_#{@current_user.token}"
+    mock_delete = Minitest::Mock.new
+    mock_delete.expect(:call, true, [cache_key])
+    Rails.cache.stub(:delete, mock_delete) do
+      post invalidate_cache_repositories_url
+      assert_redirected_to new_repository_url
+    end
+    mock_delete.verify
   end
 end
