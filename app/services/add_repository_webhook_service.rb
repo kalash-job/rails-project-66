@@ -5,7 +5,6 @@ require 'uri'
 class AddRepositoryWebhookService
   include Rails.application.routes.url_helpers
 
-  WEBHOOK_PATH = '/api/checks'
   WEBHOOK_EVENTS = ['push'].freeze
 
   def initialize(repository, client)
