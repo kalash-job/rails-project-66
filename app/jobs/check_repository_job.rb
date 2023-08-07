@@ -7,6 +7,7 @@ class CheckRepositoryJob < ApplicationJob
     @check.fail!
     clean_repositories_directory
     logger.error error
+    RepositoryCheckMailer.with(check: @check).check_error_email.deliver_later
   end
 
   def perform(check_id)

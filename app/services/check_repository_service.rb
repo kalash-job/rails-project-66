@@ -22,5 +22,6 @@ class CheckRepositoryService
     report = LinterCheckers::LinterCheckService
              .create_linter_checker(@check, linter).call
     ReportParsers::LinterReportParserService.create_linter_report_parser(@check, linter).call(report)
+    RepositoryCheckMailer.with(check: @check).check_offenses_email.deliver_later if @check.offenses_count.positive?
   end
 end

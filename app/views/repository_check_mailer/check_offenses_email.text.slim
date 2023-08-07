@@ -1,0 +1,17 @@
+|
+  #{t('.hello', name: @user.nickname)}
+= "\n\n"
+|
+  #{t('.check_result', id: @check.id, repository_name: @repository.name, count: @check.offenses_count)}
+  #{t('.recommends')}
+  #{@check_url}
+= "\n\n"
+= '------------------------------------------------------------------------'
+= "\n\n"
+|
+  #{t('.thanks')}
+= "\n\n"
+|
+  #{t('.signature')}
+  #{t('.team')}
+  #{@root_url}
