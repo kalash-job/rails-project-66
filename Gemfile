@@ -134,6 +134,8 @@ group :test do
   gem 'simplecov', require: false
 
   gem 'webdrivers'
+
+  gem 'webmock'
 end
 
 group :production do
