@@ -22,10 +22,12 @@
 
 one:
   commit_id: 1
+  offenses_count: 1
   passed: false
   repository: one
 
 two:
   commit_id: 1
+  offenses_count: 1
   passed: false
   repository: two
