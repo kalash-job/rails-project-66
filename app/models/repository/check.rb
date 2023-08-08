@@ -5,9 +5,9 @@
 # Table name: repository_checks
 #
 #  id             :integer          not null, primary key
+#  aasm_state     :string
 #  offenses_count :integer
 #  passed         :boolean          default(FALSE)
-#  state          :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  commit_id      :string
@@ -27,7 +27,7 @@ class Repository::Check < ApplicationRecord
   belongs_to :repository, inverse_of: :checks, touch: true
   has_many :offenses, class_name: 'Repository::Offense', inverse_of: :check, dependent: :destroy
 
-  aasm whiny_transitions: false, column: :state do
+  aasm whiny_transitions: false do
     state :created, initial: true
     state :checking, :finished, :failed
 

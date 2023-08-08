@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_002520) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_212121) do
   create_table "repositories", force: :cascade do |t|
     t.string "name"
     t.string "full_name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_002520) do
     t.integer "repository_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "state"
+    t.string "aasm_state"
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
   end
 
