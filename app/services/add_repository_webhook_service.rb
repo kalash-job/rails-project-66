@@ -14,7 +14,7 @@ class AddRepositoryWebhookService
 
   def call
     @client.create_hook(
-      [@repository.owner_name, @repository.name].join('/'),
+      @repository.full_name,
       'web',
       {
         url: api_checks_url,

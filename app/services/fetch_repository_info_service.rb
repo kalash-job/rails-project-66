@@ -12,7 +12,7 @@ class FetchRepositoryInfoService
         name: repository_info.name,
         language: repository_info.language || repository_info.parent&.language,
         clone_url: repository_info.clone_url,
-        owner_name: repository_info.owner.login
+        full_name: [repository_info.owner.login, repository_info.name].join('/')
       )
     end
   end
