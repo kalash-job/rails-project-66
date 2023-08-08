@@ -28,6 +28,7 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     @repository.checks.last.tap do |check|
       assert { check.offenses_count == 2 }
       assert { !check.passed }
+      assert { check.finished? }
     end
   end
 
@@ -39,6 +40,7 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     repository.checks.last.tap do |check|
       assert { check.offenses_count == 2 }
       assert { !check.passed }
+      assert { check.finished? }
     end
   end
 
