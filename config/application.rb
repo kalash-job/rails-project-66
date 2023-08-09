@@ -25,5 +25,6 @@ module RailsProject66
     I18n.default_locale = :ru
     config.autoload_paths += %W[#{config.root}/lib]
     routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
+    config.action_mailer.default_options = { from: ENV.fetch('MAIL_FROM', nil) }
   end
 end
