@@ -19,6 +19,7 @@ class Api::ChecksControllerTest < ActionDispatch::IntegrationTest
          headers: { 'X-Hub-Signature-256' => x_hub_signature_header }
 
     assert { previous_checks_count + 1 == Repository::Check.count }
+    assert { Repository::Check.last.finished? }
     assert_response :success
   end
 end
