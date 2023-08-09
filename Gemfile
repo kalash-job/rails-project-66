@@ -46,6 +46,8 @@ gem 'aasm'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'dry-container'
+
 gem 'enumerize'
 
 gem 'octokit'
@@ -83,8 +85,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 
   gem 'dotenv-rails'
-
-  gem 'dry-container'
 
   gem 'faker'
 

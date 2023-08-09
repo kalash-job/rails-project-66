@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'dry/container'
 require 'open3'
 
 class ApplicationContainer
