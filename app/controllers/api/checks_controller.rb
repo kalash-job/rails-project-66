@@ -2,7 +2,8 @@
 
 class Api::ChecksController < Api::ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :check_github_webhook_token
+  # Uncomment this line to enable GitHub webhook token verification
+  # before_action :check_github_webhook_token
 
   def create
     begin
