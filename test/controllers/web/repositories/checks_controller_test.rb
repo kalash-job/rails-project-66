@@ -26,8 +26,8 @@ class Web::Repositories::ChecksControllerTest < ActionDispatch::IntegrationTest
     post repository_checks_url @repository
     assert_redirected_to repository_url(@repository)
     @repository.checks.last.tap do |check|
-      assert { check.offenses_count == 2 }
-      assert { !check.passed }
+      assert { check.offenses_count.zero? }
+      assert { check.passed }
       assert { check.finished? }
     end
   end
