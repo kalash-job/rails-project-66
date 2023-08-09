@@ -18,7 +18,7 @@ class CheckRepositoryService
     rescue Octokit::NotFound
       @check.commit_id = @client.commits(@repository.github_id, 'main').first.sha[0...6]
     end
-    linter = LINTERS_BY_LANGUAGE.fetch(@repository.language.downcase)
+    linter = LINTERS_BY_LANGUAGE.fetch(@repository.language)
     report = LinterCheckers::LinterCheckService
              .create_linter_checker(@check, linter).call
     ReportParsers::LinterReportParserService.create_linter_report_parser(@check, linter).call(report)

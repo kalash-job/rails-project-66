@@ -10,7 +10,7 @@ class FetchRepositoryInfoService
     @client.repository(@repository.github_id).tap do |repository_info|
       @repository.update!(
         name: repository_info.name,
-        language: repository_info.language || repository_info.parent&.language,
+        language: (repository_info.language || repository_info.parent&.language).downcase,
         clone_url: repository_info.clone_url,
         full_name: [repository_info.owner.login, repository_info.name].join('/')
       )

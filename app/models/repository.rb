@@ -32,5 +32,5 @@ class Repository < ApplicationRecord
   validates :github_id, presence: true
   validates :github_id, uniqueness: true
 
-  enumerize :language, in: %i[JavaScript Ruby], scope: true
+  enumerize :language, in: %i[javascript ruby], scope: true
 end
