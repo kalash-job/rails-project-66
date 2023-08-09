@@ -24,12 +24,14 @@
 
 one:
   name: java_script_repo
+  full_name: one/java_script_repo
   language: JavaScript
   github_id: 634347931
   user: one
 
 two:
   name: ruby_repo
+  full_name: two/ruby_repo
   language: Ruby
   github_id: 598171254
   user: two
