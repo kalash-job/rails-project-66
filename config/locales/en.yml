@@ -51,6 +51,7 @@ en:
           message: Message
           offenses_count: Offenses count
           rule_id: Rule ID
+          status: Status
           title: Results of repository check
       create:
         failure: Repository has not been added

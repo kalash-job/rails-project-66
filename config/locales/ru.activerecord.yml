@@ -5,10 +5,10 @@ ru:
       repository:
         github_id: Github
       repository/check:
-        state/created: Создана
-        state/checking: В процессе
-        state/finished: Завершена
-        state/failed: Завершилась с ошибкой
+        aasm_state/created: Создана
+        aasm_state/checking: В процессе
+        aasm_state/finished: Завершена
+        aasm_state/failed: Завершилась с ошибкой
     models:
       check: Проверка
       repository: Репозиторий

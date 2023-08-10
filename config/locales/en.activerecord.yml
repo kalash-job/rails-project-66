@@ -5,10 +5,10 @@ en:
       repository:
         github_id: Github
       repository/check:
-        state/created: Created
-        state/checking: Checking
-        state/finished: Finished
-        state/failed: Failed
+        aasm_state/created: Created
+        aasm_state/checking: Checking
+        aasm_state/finished: Finished
+        aasm_state/failed: Failed
     models:
       check: Check
       repository: Repository
