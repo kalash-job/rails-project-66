@@ -5,8 +5,8 @@ en:
   enumerize:
     repository:
       language:
-        JavaScript: JavaScript
-        Ruby: Ruby
+        javascript: javascript
+        ruby: ruby
   layouts:
     application:
       hexlet_title: Hexlet Ltd

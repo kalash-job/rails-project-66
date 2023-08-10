@@ -11,7 +11,7 @@ class FetchRepositoriesListService
       languages = Repository.language.values.collect(&:text)
       repositories = @client.repos.select do |repository|
         repository_language = repository.language || @client.repository(repository.id).parent&.language
-        languages.include?(repository_language.downcase)
+        repository_language.present? && languages.include?(repository_language.downcase)
       end
       time_key = Time.now.to_i
       { time_key => repositories.pluck(:name, :id) }
