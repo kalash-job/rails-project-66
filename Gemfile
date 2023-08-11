@@ -90,6 +90,8 @@ group :development, :test do
 
   gem 'minitest-power_assert'
 
+  gem 'rubycritic', require: false
+
   gem 'rubocop-rails', require: false
 
   gem 'rubocop-performance'
