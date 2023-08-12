@@ -13,7 +13,7 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def new
-    @repositories_list = FetchRepositoriesListService.new(current_user.token).call
+    @repositories_list = fetch_repositories_list
     @repository = Repository.new
     @cache_key = repositories_list_cache_key
   end
@@ -23,11 +23,11 @@ class Web::RepositoriesController < Web::ApplicationController
     is_new_repository = @repository.new_record?
 
     if @repository.save
-      ProcessNewRepositoryJob.perform_later(@repository.id) if is_new_repository
+      process_new_repository if is_new_repository
       redirect_to repositories_path, notice: t('.success')
     else
       flash.now[:failure] = t('.failure')
-      @repositories_list = FetchRepositoriesListService.new(current_user.token).call
+      @repositories_list = fetch_repositories_list
       render :new, status: :unprocessable_entity
     end
   end
@@ -46,5 +46,13 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def repositories_list_cache_key
     "repositories_list_#{current_user.token}"
+  end
+
+  def process_new_repository
+    ProcessNewRepositoryJob.perform_later(@repository.id)
+  end
+
+  def fetch_repositories_list
+    FetchRepositoriesListService.new(current_user.token).call
   end
 end
