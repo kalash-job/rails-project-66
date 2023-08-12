@@ -33,4 +33,6 @@ class Repository < ApplicationRecord
   validates :github_id, uniqueness: true
 
   enumerize :language, in: %i[javascript ruby], scope: true
+
+  scope :by_id, -> { order(:id) }
 end

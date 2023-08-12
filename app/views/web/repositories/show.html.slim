@@ -40,4 +40,4 @@
           td = link_to github_commit_url(@repository, check.commit_id) do
             = check.commit_id
           td = check.passed
-          td = l(check.created_at, format: :long)
+          td = l(check.created_at, format: :short)

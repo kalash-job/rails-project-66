@@ -4,7 +4,7 @@ class Web::RepositoriesController < Web::ApplicationController
   before_action :authenticate_user!
 
   def index
-    @repositories = current_user.repositories
+    @repositories = current_user.repositories.by_id
   end
 
   def show
