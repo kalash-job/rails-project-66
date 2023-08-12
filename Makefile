@@ -9,13 +9,9 @@ check:
 rspec:
 	rspec spec --format documentation
 
-seed:
-	bin/rails db:seed
-
 setup:
 	cp -n .env.example .env || true
 	bin/rails db:migrate
-	bin/rails db:seed
 
 start:
 	bin/rails server
