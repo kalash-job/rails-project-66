@@ -28,6 +28,7 @@ class Web::RepositoriesController < Web::ApplicationController
     else
       flash.now[:failure] = t('.failure')
       @repositories_list = fetch_repositories_list
+      @cache_key = repositories_list_cache_key
       render :new, status: :unprocessable_entity
     end
   end
