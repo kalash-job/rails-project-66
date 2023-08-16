@@ -11,7 +11,9 @@ class CheckRepositoryJob < ApplicationJob
   end
 
   def perform(check_id)
-    @check = Repository::Check.find(check_id)
+    @check = Repository::Check.find_by(id: check_id)
+    return unless @check
+
     @check.check!
     CloneRepositoryService.new(@check.repository).call
     CheckRepositoryService.new(@check).call
@@ -22,6 +24,6 @@ class CheckRepositoryJob < ApplicationJob
   private
 
   def clean_repositories_directory
-    FileUtils.rm_rf(Rails.root.join('tmp/repositories'))
+    FileUtils.rm_rf(Rails.root.join('tmp/repositories', @check.repository.github_id.to_s))
   end
 end

@@ -21,8 +21,11 @@ class CheckRepositoryService
     linter = LINTERS_BY_LANGUAGE.fetch(@repository.language)
     report = LinterCheckers::LinterCheckService
              .create_linter_checker(@check, linter).call
-    ReportParsers::LinterReportParserService.create_linter_report_parser(@check, linter).call(report)
-    RepositoryCheckMailer.with(check: @check).check_offenses_email.deliver_later if @check.offenses_count.positive?
+    ReportParsers::LinterReportParserService.create_parser(@check, linter).call(report)
+    @check.offenses_count = @check.offenses.count
+    @check.passed = @check.offenses_count.zero?
+    @check.save
+    RepositoryCheckMailer.with(check: @check).check_offenses_email.deliver_later unless @check.passed
   end
 
   private

@@ -2,7 +2,7 @@
 
 class ReportParsers::LinterReportParserService
   PATH_NESTING_LEVEL = 2
-  def self.create_linter_report_parser(check, linter)
+  def self.create_parser(check, linter)
     parser_service = "ReportParsers::#{linter}ReportParserService"
     Object.const_get(parser_service).new(check)
   end

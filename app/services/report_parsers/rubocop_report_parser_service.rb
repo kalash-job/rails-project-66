@@ -16,8 +16,5 @@ class ReportParsers::RubocopReportParserService < ReportParsers::LinterReportPar
         )
       end
     end
-    @check.offenses_count = parsed_report['summary']['offense_count']
-    @check.passed = @check.offenses_count.zero?
-    @check.save
   end
 end
