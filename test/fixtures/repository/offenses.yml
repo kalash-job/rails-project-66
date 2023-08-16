@@ -21,15 +21,15 @@
 #
 
 one:
-  path: MyString
-  rule_id: MyString
-  message: MyString
-  coords: MyString
+  path: src/background/index.js
+  rule_id: no-undef
+  message: \'process\' is not defined.
+  coords: 12:19
   check: one
 
 two:
-  path: MyString
-  rule_id: MyString
-  message: MyString
-  coords: MyString
+  path: Gemfile
+  rule_id: Style/StringLiterals
+  message: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  coords: 3:8
   check: two
