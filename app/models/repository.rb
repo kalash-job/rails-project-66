@@ -29,8 +29,7 @@ class Repository < ApplicationRecord
   belongs_to :user, inverse_of: :repositories
   has_many :checks, class_name: 'Repository::Check', inverse_of: :repository, dependent: :destroy
 
-  validates :github_id, presence: true
-  validates :github_id, uniqueness: true
+  validates :github_id, presence: true, uniqueness: true
 
   enumerize :language, in: %i[javascript ruby], scope: true
 

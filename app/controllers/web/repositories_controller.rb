@@ -20,10 +20,10 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def create
     @repository = current_user.repositories.find_or_initialize_by(repository_params)
-    is_new_repository = @repository.new_record?
+    return redirect_to repositories_path if @repository.persisted?
 
     if @repository.save
-      process_new_repository if is_new_repository
+      process_new_repository
       redirect_to repositories_path, notice: t('.success')
     else
       flash.now[:failure] = t('.failure')
@@ -34,8 +34,7 @@ class Web::RepositoriesController < Web::ApplicationController
   end
 
   def invalidate_cache
-    @cache_key = repositories_list_cache_key
-    Rails.cache.delete(@cache_key)
+    Rails.cache.delete(repositories_list_cache_key)
     redirect_to new_repository_path, notice: t('.success')
   end
 
