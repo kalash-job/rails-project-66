@@ -20,11 +20,11 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def create
     @repository = current_user.repositories.find_or_initialize_by(repository_params)
-    return redirect_to repositories_path if @repository.persisted?
+    return redirect_to_repositories if @repository.persisted?
 
     if @repository.save
       process_new_repository
-      redirect_to repositories_path, notice: t('.success')
+      redirect_to_repositories
     else
       flash.now[:failure] = t('.failure')
       @repositories_list = fetch_repositories_list
@@ -54,5 +54,9 @@ class Web::RepositoriesController < Web::ApplicationController
 
   def fetch_repositories_list
     FetchRepositoriesListService.new(current_user.token).call
+  end
+
+  def redirect_to_repositories
+    redirect_to repositories_path, notice: t('.success')
   end
 end
