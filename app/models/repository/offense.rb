@@ -22,5 +22,5 @@
 #  check_id  (check_id => repository_checks.id)
 #
 class Repository::Offense < ApplicationRecord
-  belongs_to :check, class_name: 'Repository::Check', inverse_of: :offenses
+  belongs_to :check, class_name: 'Repository::Check', inverse_of: :offenses, counter_cache: true
 end

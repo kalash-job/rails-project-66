@@ -6,7 +6,7 @@
 #
 #  id             :integer          not null, primary key
 #  aasm_state     :string
-#  offenses_count :integer
+#  offenses_count :integer          default(0)
 #  passed         :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
