@@ -22,7 +22,7 @@ class CheckRepositoryService
     report = LinterCheckers::LinterCheckService
              .create_linter_checker(@check, linter).call
     ReportParsers::LinterReportParserService.create_parser(@check, linter).call(report)
-    @check.passed = @check.offenses.count.zero?
+    @check.passed = @check.offenses_count.zero?
     @check.save
     RepositoryCheckMailer.with(check: @check).check_offenses_email.deliver_later unless @check.passed
   end
